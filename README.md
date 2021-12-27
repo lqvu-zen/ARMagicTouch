@@ -1,1 +1,1 @@
-"# ARMagicTouch" 
+# ARMagicTouch
