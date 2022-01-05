@@ -16,12 +16,13 @@ public class SpellController : ScriptableObject
         return null;
     }
 
-    public void SpawnSpell(string spellName, Vector3 pos){
+    public void SpawnSpell(string spellName, PlayerTransform player){
         Debug.Log("SpawnSpell:" +spellName);
         Spell spell = FindSpellByName(spellName);
         if (spell == null){
             return;
         }
+        Vector3 pos = spell.FindPosition(player);
         Instantiate(spell, pos, Quaternion.identity);
     }
 }

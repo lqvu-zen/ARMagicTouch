@@ -16,8 +16,6 @@ public class SpellTrigger : MonoBehaviour
 
     void DetectAndTriggerSpell(LineRenderer line){
         string spellName = detector.RecognizeSpell(line);
-        Vector3 pos = playerTransform.position + playerTransform.forward*25;
-        pos.y = 0;
-        spellController.SpawnSpell(spellName, pos);
+        spellController.SpawnSpell(spellName, playerTransform);
     }
 }
