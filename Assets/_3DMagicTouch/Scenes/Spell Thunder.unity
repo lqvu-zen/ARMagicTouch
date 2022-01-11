@@ -10423,10 +10423,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thunder Spell
       objectReference: {fileID: 0}
-    - target: {fileID: 1589921188510586792, guid: 119383847adce3b4585bb582404623fc, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1732712464429282425, guid: 119383847adce3b4585bb582404623fc, type: 3}
       propertyPath: CollisionModule.m_Planes.Array.data[0]
       value: 
