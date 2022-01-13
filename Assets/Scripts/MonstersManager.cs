@@ -28,6 +28,8 @@ public class MonstersManager : MonoBehaviour
     Camera arCamera;
     Vector3 arCameraPosition;
 
+    bool plane_enable = false;
+    public GameObject plane;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +52,7 @@ public class MonstersManager : MonoBehaviour
 
         for (int i = 0; i < spawnableObjects.Length; ++i)
         {
-            if (spawnableObjects[i].count > 0 && spawnableObjects[i].gatePosition != Vector3.zero)
+            if (plane_enable && spawnableObjects[i].count > 0 && spawnableObjects[i].gatePosition != Vector3.zero)
             {
                 /*// Get gate position
                 if (spawnableObjects[i].gatePosition == Vector3.zero)
@@ -88,6 +90,13 @@ public class MonstersManager : MonoBehaviour
                     }
                 }
             }
+        }    
+
+        if (!plane_enable)
+        {
+            plane_enable = true;
+
+            plane.SetActive(true);
         }    
     }
 }

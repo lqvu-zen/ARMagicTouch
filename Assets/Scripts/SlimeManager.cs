@@ -31,7 +31,7 @@ public class SlimeManager : MonoBehaviour
         transform.rotation = rotation;
 
         //move to camera
-        if (Vector3.Distance(arCameraVirtualPosition, transform.position) >= 0.5f)
+        if (Vector3.Distance(arCameraVirtualPosition, transform.position) >= 1.0f)
         {
             anim.SetFloat("Speed", speed);
             transform.Translate(lookVector * Time.deltaTime * -speed, Space.Self);
