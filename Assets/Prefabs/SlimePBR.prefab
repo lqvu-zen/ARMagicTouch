@@ -320,6 +320,8 @@ GameObject:
   - component: {fileID: 1270602048631665070}
   - component: {fileID: 1224497612752135804}
   - component: {fileID: -847653478554402347}
+  - component: {fileID: -6104445716102162798}
+  - component: {fileID: 2175739196875213614}
   m_Layer: 0
   m_Name: SlimePBR
   m_TagString: Untagged
@@ -374,6 +376,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b047e723c9d31479ec06a459fd344a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &-6104445716102162798
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272987726755943440}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &2175739196875213614
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272987726755943440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.44345725
+  m_Center: {x: 0, y: 0.42, z: 0}
 --- !u!1 &1273198260622528528
 GameObject:
   m_ObjectHideFlags: 0
