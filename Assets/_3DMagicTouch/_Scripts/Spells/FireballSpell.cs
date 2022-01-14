@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrueshotSpell : Spell
+public class FireballSpell : Spell
 {
     public float speed;
     Vector3 defaultPos;
@@ -24,12 +24,11 @@ public class TrueshotSpell : Spell
 
     public override Vector3 FindPosition(PlayerTransform player)
     {
-        Debug.Log("Child Invoke");
+        // Debug.Log("Child Invoke");
         Vector3 pos = player.position;
-        pos.y /= 2;
+        // pos.y -= 1;
         return pos;
     }
-
     public override Quaternion FindRotation (PlayerTransform player)
     {
         // Debug.Log("Child Invoke");

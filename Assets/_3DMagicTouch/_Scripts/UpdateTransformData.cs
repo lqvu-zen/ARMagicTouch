@@ -11,5 +11,6 @@ public class UpdateTransformData : MonoBehaviour
     {
         playerTransform.position = transform.position;
         playerTransform.forward = transform.forward;
+        playerTransform.rotation = transform.rotation;
     }
 }

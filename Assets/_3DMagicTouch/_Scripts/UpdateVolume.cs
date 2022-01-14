@@ -8,6 +8,11 @@ public class UpdateVolume : MonoBehaviour
     public FloatVariable floatVariable;
     public Slider volume;
 
+    void Awake()
+    {
+        volume.value = floatVariable.value;
+    }
+
     void Update()
     {
         floatVariable.value = volume.value;

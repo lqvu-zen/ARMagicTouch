@@ -12,6 +12,10 @@ public class SpellTrigger : MonoBehaviour
     void Start()
     {
         drawLine.OnFinishDraw += DetectAndTriggerSpell;
+        for (int i = 0; i < spellController.activeTime.Count; ++i)
+        {
+            spellController.activeTime[i] = 0f;
+        }
     }
 
     void DetectAndTriggerSpell(LineRenderer line){

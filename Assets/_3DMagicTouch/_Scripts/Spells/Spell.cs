@@ -17,4 +17,9 @@ public class Spell : MonoBehaviour
         Debug.Log("Parent Invoke");
         return Vector3.zero;
     }
+
+    public virtual Quaternion FindRotation( PlayerTransform player){
+        Debug.Log("Parent Invoke");
+        return Quaternion.identity;
+    }
 }
