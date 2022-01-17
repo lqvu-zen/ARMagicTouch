@@ -21,6 +21,8 @@ public class MonstersManager : MonoBehaviour
     ARRaycastManager arRaycastManager;
     ARPlaneManager arPlaneManager;
 
+    static List<ARRaycastHit> arRaycastHits = new List<ARRaycastHit>();
+
     public MonsterInfo[] spawnableObjects;
 
     List<GameObject> spawnedObjects = new List<GameObject>();
@@ -28,17 +30,25 @@ public class MonstersManager : MonoBehaviour
     Camera arCamera;
     Vector3 arCameraPosition;
 
-    bool plane_enable = false;
-    public GameObject plane;
+    public GameObject manaZone;
+    bool manaZone_spwaned = false; 
 
-    // Start is called before the first frame update
-    void Start()
+    public GameObject plane;
+    bool plane_spwaned = false;
+
+    public GameObject panel;
+
+    void Awake()
     {
         arCamera = GameObject.Find("AR Camera").GetComponent<Camera>();
 
         arRaycastManager = GetComponent<ARRaycastManager>();
         arPlaneManager = GetComponent<ARPlaneManager>();
+    }
 
+    // Start is called before the first frame update
+    void Start()
+    {
         arPlaneManager.planesChanged += PlaneChanged;
     }
 
@@ -48,11 +58,17 @@ public class MonstersManager : MonoBehaviour
         if (arCameraPosition == Vector3.zero)
         {
             arCameraPosition = arCamera.transform.position;
-        }  
+        }
+
+        // Set mana zone
+        if (!manaZone_spwaned)
+        {
+            SpawnManaZone();
+        }    
 
         for (int i = 0; i < spawnableObjects.Length; ++i)
         {
-            if (plane_enable && spawnableObjects[i].count > 0 && spawnableObjects[i].gatePosition != Vector3.zero)
+            if (plane_spwaned && spawnableObjects[i].count > 0 && spawnableObjects[i].gatePosition != Vector3.zero)
             {
                 /*// Get gate position
                 if (spawnableObjects[i].gatePosition == Vector3.zero)
@@ -68,6 +84,54 @@ public class MonstersManager : MonoBehaviour
             }
         }
     }
+
+    public void SetPanel(string text)
+    {
+        if (!panel.activeSelf)
+        {
+            DebugText.UpdateDebugText(text);
+            panel.SetActive(true);
+        }    
+    }
+    
+    public void ClosePanel()
+    {
+        if (!manaZone_spwaned && manaZone.activeSelf)
+        {
+            SetManaZone();
+            panel.SetActive(false);
+        }
+    }    
+
+    void SpawnManaZone()
+    {
+        SetPanel("Let's choose where to protect!!");
+        if (arRaycastManager.Raycast(Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)), arRaycastHits, TrackableType.All))
+        {
+            Pose hitPose = arRaycastHits[0].pose;
+            if (!manaZone.activeSelf)
+            {
+                manaZone.SetActive(true);
+            }
+
+            manaZone.transform.position = hitPose.position;
+        }
+    }
+
+    void SetManaZone()
+    {
+        if (!manaZone_spwaned)
+        {
+            manaZone_spwaned = true;
+
+            if (!plane_spwaned)
+            {
+                plane_spwaned = true;
+                plane.transform.position = new Vector3(0f, manaZone.transform.position.y, 0f);
+                plane.SetActive(true);
+            } 
+        }
+    }    
 
     void PlaneChanged(ARPlanesChangedEventArgs args)
     {
@@ -90,13 +154,6 @@ public class MonstersManager : MonoBehaviour
                     }
                 }
             }
-        }    
-
-        if (!plane_enable)
-        {
-            plane_enable = true;
-
-            plane.SetActive(true);
         }    
     }
 }
