@@ -10,6 +10,7 @@ public class DrawLine : MonoBehaviour
     public LineRenderer baseLine;
     public bool useBaseLine;
     public event System.Action<LineRenderer> OnFinishDraw;
+    public SpellTrigger spellTrigger;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,9 +35,12 @@ public class DrawLine : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0)){
             currentLine.gameObject.SetActive(false);
-            if (OnFinishDraw != null){
-                OnFinishDraw(currentLine);
-            }
+            
+            // if (OnFinishDraw != null){
+            //     OnFinishDraw(currentLine);
+            // }
+
+            spellTrigger.DetectAndTriggerSpell(currentLine);
         }
     }
 

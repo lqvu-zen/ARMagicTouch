@@ -8,6 +8,8 @@ public class SaveLoadToFile : ScriptableObject
 {
     public string path;
     public string fileName;
+
+    public TextAsset textAsset;
     
     GestureDataList dataList;
 
@@ -20,7 +22,10 @@ public class SaveLoadToFile : ScriptableObject
         File.WriteAllText(path +'/' + fileName, json);
     }
     public GestureDataList Load(){
-        string json = File.ReadAllText(path +'/' +fileName, System.Text.Encoding.UTF8);
+        // string fullPath = Path.Combine(Application.dataPath, path,fileName);
+        // string json = File.ReadAllText(fullPath, System.Text.Encoding.UTF8);
+        string json = textAsset.text;
+        Debug.Log(json);
         GestureDataList res = JsonUtility.FromJson<GestureDataList>(json);
         if (res == null){
             res = new GestureDataList();

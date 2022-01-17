@@ -41,6 +41,7 @@ public class SpellController : ScriptableObject
         if (spell == null){
             return;
         }
+        Debug.Log("Success");
         Vector3 pos = spell.FindPosition(player);
         Quaternion rot = spell.FindRotation(player);
         Instantiate(spell, pos, rot);

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1337d4a102a730e4e994c58bc0759e90, type: 3}
   m_Name: SaveLoadToFile
   m_EditorClassIdentifier: 
-  path: Assets/_3DMagicTouch/Scriptable Objects
+  path: _3DMagicTouch/Scriptable Objects
   fileName: gesturedata.json
+  textAsset: {fileID: 4900000, guid: affd7aad3cc9c0b46aa6a7ee2316e2dc, type: 3}

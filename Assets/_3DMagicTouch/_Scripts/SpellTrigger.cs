@@ -18,8 +18,9 @@ public class SpellTrigger : MonoBehaviour
         }
     }
 
-    void DetectAndTriggerSpell(LineRenderer line){
+    public void DetectAndTriggerSpell(LineRenderer line){
         string spellName = detector.RecognizeSpell(line);
+        // string spellName = "circle";
         spellController.SpawnSpell(spellName, playerTransform);
     }
 }
