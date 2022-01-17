@@ -8,6 +8,20 @@ public class SpellTrigger : MonoBehaviour
     public GestureDetector detector;
     public SpellController spellController;
     public PlayerTransform playerTransform;
+    public event System.Action<string, float> onSpellTrigger;
+    
+    Dictionary<string, float> spellCD = new Dictionary<string, float>();
+    void Awake(){
+        for (int i = 0; i < spellController.spells.Count; ++i)
+        {
+            spellCD.Add(spellController.spells[i].spellName, spellController.cooldowns[i]);
+        }
+    }
+    public float GetCooldowns(string spell)
+    {
+        Debug.Log(spell);
+        return spellCD[spell]; 
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +35,12 @@ public class SpellTrigger : MonoBehaviour
     public void DetectAndTriggerSpell(LineRenderer line){
         string spellName = detector.RecognizeSpell(line);
         // string spellName = "circle";
-        spellController.SpawnSpell(spellName, playerTransform);
+        if (spellController.SpawnSpell(spellName, playerTransform))
+        {
+            if (onSpellTrigger != null)
+            {
+                onSpellTrigger(spellName, GetCooldowns(spellName));
+            }
+        }
     }
 }

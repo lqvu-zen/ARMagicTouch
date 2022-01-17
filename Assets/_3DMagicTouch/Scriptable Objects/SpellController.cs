@@ -10,6 +10,8 @@ public class SpellController : ScriptableObject
     public List<float> activeTime;
     // public float currentTime;
 
+
+
     public Spell FindSpellByName(string spellName){
         // foreach(Spell spell in spells){
         //     if (spell.spellName.Equals(spellName)){
@@ -35,16 +37,17 @@ public class SpellController : ScriptableObject
         return null;
     }
 
-    public void SpawnSpell(string spellName, PlayerTransform player){
+    public bool SpawnSpell(string spellName, PlayerTransform player){
         Debug.Log("SpawnSpell:" +spellName);
         Spell spell = FindSpellByName(spellName);
         if (spell == null){
-            return;
+            return false;
         }
         Debug.Log("Success");
         Vector3 pos = spell.FindPosition(player);
         Quaternion rot = spell.FindRotation(player);
         Instantiate(spell, pos, rot);
+        return true;
     }
 
 }
