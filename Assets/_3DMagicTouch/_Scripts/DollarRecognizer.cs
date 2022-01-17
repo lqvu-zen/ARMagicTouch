@@ -212,6 +212,7 @@ public class DollarRecognizer
 		float bestDist = float.PositiveInfinity;
 		int bestIndex = -1;
 
+		//DebugText.UpdateDebugText(_library.Count.ToString());
 		for (int i = 0; i < _library.Count; i++)
 		{
 			float dist = optimalCosineDistance(_library[i].Vector, v);

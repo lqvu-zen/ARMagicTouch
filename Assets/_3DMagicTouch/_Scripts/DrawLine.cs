@@ -9,6 +9,7 @@ public class DrawLine : MonoBehaviour
     public float lineSegment;
     public LineRenderer baseLine;
     public bool useBaseLine;
+    //public SpellTrigger spellTrigger;
     public event System.Action<LineRenderer> OnFinishDraw;
     public SpellTrigger spellTrigger;
     // Start is called before the first frame update

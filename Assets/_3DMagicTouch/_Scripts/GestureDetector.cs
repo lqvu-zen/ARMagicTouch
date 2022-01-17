@@ -13,6 +13,7 @@ public class GestureDetector : MonoBehaviour
     {
         dollarRecognizer = new DollarRecognizer();
         gestureDataList = saveLoadToFile.Load();
+        //DebugText.UpdateDebugText(gestureDataList.dataList.Count.ToString());
         if (gestureDataList == null){
             Debug.Log("GestureDataList null");
             return;
@@ -46,8 +47,8 @@ public class GestureDetector : MonoBehaviour
             points.Add(line.GetPosition(i));
         }
         DollarRecognizer.Result res = dollarRecognizer.Recognize(points);
-        Debug.Log(res.ToString());
-        Debug.Log(res.Match.Name);
+        //Debug.Log(res.ToString());
+        //Debug.Log(res.Match.Name);
         return res.Match.Name;
     }
 
