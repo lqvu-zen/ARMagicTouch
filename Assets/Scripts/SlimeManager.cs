@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class SlimeManager : MonoBehaviour
 {
-    Camera arCamera;
-
-    float speed = 0.1f;
+    public float speed;
+    public int hp;
 
     Animator anim;
+
+    GameObject target = null;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.rotation = Quaternion.identity;
-
-        arCamera = GameObject.Find("AR Camera").GetComponent<Camera>();
 
         anim = GetComponent<Animator>();
     }
@@ -23,22 +22,56 @@ public class SlimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Set rotation to camera
-        Vector3 arCameraVirtualPosition = arCamera.transform.position;
-        arCameraVirtualPosition.y = transform.position.y;
-        Vector3 lookVector = arCameraVirtualPosition - transform.position;
+
+        //Set rotation to target
+        Vector3 targetVirtualPosition = MonstersManager.manaZonePosition;
+        targetVirtualPosition.y = transform.position.y;
+        Vector3 lookVector = targetVirtualPosition - transform.position;
         Quaternion rotation = Quaternion.LookRotation(lookVector);
         transform.rotation = rotation;
 
-        //move to camera
-        if (Vector3.Distance(arCameraVirtualPosition, transform.position) >= 1.0f)
+        //move to target
+        if (hp > 0)
         {
-            anim.SetFloat("Speed", speed);
-            transform.Translate(lookVector * Time.deltaTime * -speed, Space.Self);
+            if (Vector3.Distance(targetVirtualPosition, transform.position) >= 1.0f)
+            {
+                WalkTo(lookVector);
+            }
+            else
+            {
+                AttackTarget();
+            }
         }
         else
         {
-            anim.SetFloat("Speed", 0);
+            Die();
+        }
+         
+    }
+
+    void WalkTo(Vector3 lookVector)
+    {
+        anim.SetInteger("State", ((int)MonstersManager.MonsterState.Walk));
+        transform.Translate(lookVector * Time.deltaTime * -speed, Space.Self);
+    }   
+    
+    void AttackTarget()
+    {
+        anim.SetInteger("State", ((int)MonstersManager.MonsterState.Attack));
+    }   
+    
+    void Die()
+    {
+        anim.SetInteger("State", ((int)MonstersManager.MonsterState.Die));
+        Destroy(this.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Fireball")
+        {
+            Destroy(collision.gameObject);
+            hp--;
         }    
     }
 }

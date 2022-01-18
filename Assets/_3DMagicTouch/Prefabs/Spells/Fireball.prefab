@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6105549941958461502}
   - component: {fileID: 6105549941958461503}
+  - component: {fileID: 324909879829248544}
   m_Layer: 0
   m_Name: Fireball
-  m_TagString: Untagged
+  m_TagString: Fireball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +48,19 @@ MonoBehaviour:
   vfx: {fileID: 3256117218462676112}
   spellName: circle
   speed: 4
+--- !u!135 &324909879829248544
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6105549941958461505}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6105549940796018731
 PrefabInstance:
   m_ObjectHideFlags: 0

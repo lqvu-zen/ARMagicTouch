@@ -15,6 +15,13 @@ public class MonstersManager : MonoBehaviour
         public float timeDelay;
     }
     bool continueSpawn = true;
+    public enum MonsterState 
+    { 
+        Idle, 
+        Walk, 
+        Attack, 
+        Die 
+    };
 
     [SerializeField]
     ARRaycastManager arRaycastManager;
@@ -30,7 +37,8 @@ public class MonstersManager : MonoBehaviour
     Vector3 arCameraPosition;
 
     public GameObject manaZone;
-    bool manaZone_spwaned = false; 
+    bool manaZone_spwaned = false;
+    static public Vector3 manaZonePosition;
 
     public GameObject plane;
     bool plane_spwaned = false;
@@ -133,6 +141,7 @@ public class MonstersManager : MonoBehaviour
         if (!manaZone_spwaned)
         {
             manaZone_spwaned = true;
+            manaZonePosition = manaZone.transform.position;
 
             if (!plane_spwaned)
             {
