@@ -11,6 +11,8 @@ public class SlimeManager : MonoBehaviour
 
     GameObject target = null;
 
+    public IntVariable playerHealth;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,5 +75,9 @@ public class SlimeManager : MonoBehaviour
             Destroy(collision.gameObject);
             hp--;
         }    
+    }
+    void AttackPlayer()
+    {
+        playerHealth.value -=1;
     }
 }
