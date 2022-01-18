@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     float totalProgress;
     public FloatVariable bgmVolume;
     public AudioSource bgm;
+    public DeadScreen deadScreen;
 
     void Awake()
     {
@@ -52,5 +53,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         bgm.volume = bgmVolume.value;
+    }
+
+    [ContextMenu("dead")]
+     void OnDead()
+    {
+        deadScreen.TurnOn();
     }
 }
