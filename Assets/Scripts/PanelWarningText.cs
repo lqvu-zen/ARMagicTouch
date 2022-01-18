@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DebugText : MonoBehaviour
+public class PanelWarningText : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     TextMeshProUGUI textMesh;
 
-    static string debugText;
+    static string warningText;
 
     void Start()
     {
@@ -17,14 +15,14 @@ public class DebugText : MonoBehaviour
         textMesh.text = "";
     }
 
-    static public void UpdateDebugText(string text)
+    static public void UpdateWarningText(string text)
     {
-        debugText = text;
-    }    
+        warningText = text;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        textMesh.text = debugText;
+        textMesh.text = warningText;
     }
 }
