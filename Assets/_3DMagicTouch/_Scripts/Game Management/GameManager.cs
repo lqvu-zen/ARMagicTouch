@@ -12,9 +12,12 @@ public class GameManager : MonoBehaviour
     public FloatVariable bgmVolume;
     public AudioSource bgm;
     public DeadScreen deadScreen;
+    public HealthPlayer healthPlayer;
+    public bool isDead;
 
     void Awake()
     {
+        isDead = false;
         instance = this;
         SceneManager.LoadSceneAsync((int)SceneIndexes.START_SCREEN, LoadSceneMode.Additive);
     }
@@ -27,6 +30,18 @@ public class GameManager : MonoBehaviour
         scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.AR, LoadSceneMode.Additive));
         scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.MENU, LoadSceneMode.Additive));
         scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.DETECT, LoadSceneMode.Additive));
+        StartCoroutine(GetSceneLoadingProgress());
+    }
+
+    public void Reload()
+    {
+        loadingScreen.SetActive(true);
+        scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.AR));
+        scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.DETECT));
+        StartCoroutine(GetSceneLoadingProgress());
+        scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.AR, LoadSceneMode.Additive));
+        scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.DETECT, LoadSceneMode.Additive));
+        healthPlayer.Reset();
         StartCoroutine(GetSceneLoadingProgress());
     }
 
@@ -48,6 +63,7 @@ public class GameManager : MonoBehaviour
             }
         }
         loadingScreen.SetActive(false);
+        healthPlayer.gameObject.SetActive(true);
     }
 
     void Update()
@@ -56,8 +72,9 @@ public class GameManager : MonoBehaviour
     }
 
     [ContextMenu("dead")]
-     void OnDead()
+    public void OnDead()
     {
         deadScreen.TurnOn();
+        isDead = true;
     }
 }

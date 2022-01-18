@@ -33,6 +33,7 @@ public class SpellTrigger : MonoBehaviour
     }
 
     public void DetectAndTriggerSpell(LineRenderer line){
+        if (line.positionCount < 2) return;
         string spellName = detector.RecognizeSpell(line);
         // string spellName = "circle";
         if (spellController.SpawnSpell(spellName, playerTransform))
