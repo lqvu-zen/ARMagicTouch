@@ -3,7 +3,14 @@ guid: 34f622f9ebc7dfd4ea3f34bc579e1290
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - loadingScreen: {fileID: 8818884909165899318, guid: a39ec50c38105b849acfca7a4fbd3b0c, type: 3}
+  - progressBar: {instanceID: 0}
+  - bgmVolume: {fileID: 11400000, guid: 7bb6bd35d51001b4886c73825c37406a, type: 2}
+  - bgm: {instanceID: 0}
+  - deadScreen: {instanceID: 0}
+  - healthPlayer: {instanceID: 0}
+  - score: {fileID: 11400000, guid: c0bb89576d24af04f9cef4b4a98c5668, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -17,8 +17,8 @@ MonoBehaviour:
   - {fileID: 5531110209506241917, guid: 38a2e7e9f34c13a42b3816f75773e9e8, type: 3}
   - {fileID: 6105549941958461503, guid: 460df2d86fde4a943a2c35fbf9adada7, type: 3}
   cooldowns:
-  - 5
-  - 3
+  - 30
+  - 10
   - 0.1
   activeTime:
   - 9.964117

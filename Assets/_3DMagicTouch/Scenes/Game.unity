@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2033,7 +2033,7 @@ MonoBehaviour:
   bgm: {fileID: 1432721920}
   deadScreen: {fileID: 1620914460}
   healthPlayer: {fileID: 1073104472}
-  score: {fileID: 0}
+  score: {fileID: 11400000, guid: c0bb89576d24af04f9cef4b4a98c5668, type: 2}
   isDead: 0
 --- !u!4 &1763653483
 Transform:

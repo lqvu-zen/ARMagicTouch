@@ -14,6 +14,8 @@ public class SlimeManager : MonoBehaviour
     public IntVariable playerHealth;
     public IntVariable score;
 
+    bool died = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,8 +67,22 @@ public class SlimeManager : MonoBehaviour
     
     void Die()
     {
-        anim.SetInteger("State", ((int)MonstersManager.MonsterState.Die));
-        score.value += 1;
+        if (!died)
+        {
+            died = true;
+            anim.SetInteger("State", ((int)MonstersManager.MonsterState.Die));
+            score.value += 1;
+            HighscoreController.SetHighscore(score.value);
+            StartCoroutine(DestroyMonster(2));
+        }    
+    }
+
+    IEnumerator DestroyMonster(float delayTime)
+    {
+        //Wait for the specified delay time before continuing.
+        yield return new WaitForSeconds(delayTime);
+
+        //Do the action after the delay time has finished.
         Destroy(this.gameObject);
     }
 
@@ -77,7 +93,33 @@ public class SlimeManager : MonoBehaviour
             Destroy(collision.gameObject);
             hp--;
         }    
+        else if (collision.gameObject.tag == "ERZ")
+        {
+            hp -= 2;
+        }
+        else if (collision.gameObject.tag == "Thunder")
+        {
+            hp -= 3;
+        }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Fireball"))
+        {
+            Destroy(other.gameObject);
+            hp--;
+        }
+        else if (other.gameObject.CompareTag("EZR"))
+        {
+            hp -= 2;
+        }
+        else if (other.gameObject.CompareTag("Thunder"))
+        {
+            hp -= 3;
+        }
+    }
+
     void AttackPlayer()
     {
         playerHealth.value -=1;

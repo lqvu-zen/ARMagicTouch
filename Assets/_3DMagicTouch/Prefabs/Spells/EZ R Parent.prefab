@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8842972323259263466}
   - component: {fileID: 5531110209506241917}
+  - component: {fileID: 7029665058574130335}
   m_Layer: 0
   m_Name: EZ R Parent
-  m_TagString: Untagged
+  m_TagString: EZR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +48,19 @@ MonoBehaviour:
   vfx: {fileID: 892528294327136029}
   spellName: ezr
   speed: 10
+--- !u!65 &7029665058574130335
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2843929335997808006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9743052, y: 0.24230039, z: 0.8391617}
+  m_Center: {x: 0.0094463825, y: -0.0063556433, z: 0.24287686}
 --- !u!1001 &4023301270165825297
 PrefabInstance:
   m_ObjectHideFlags: 0
