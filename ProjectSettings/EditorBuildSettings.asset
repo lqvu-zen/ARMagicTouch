@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_3DMagicTouch/Scenes/Detect Spell.unity
     guid: c90fa9081c26c6947a58b12075cec460
+  - enabled: 1
+    path: Assets/_3DMagicTouch/Scenes/Tutorial.unity
+    guid: e02d2e33fc8ffb14dab67313cd45c3d6
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 780b6d46c8f29fc408623741078d7fe1, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3b774dd311be69e4287cbe5de9e06084, type: 2}

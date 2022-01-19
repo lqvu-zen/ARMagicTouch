@@ -26,11 +26,13 @@ public class GameManager : MonoBehaviour
     List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
 
     public void LoadGame(){
+        isDead = false;
         loadingScreen.SetActive(true);
         scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.START_SCREEN));
         scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.AR, LoadSceneMode.Additive));
         scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.MENU, LoadSceneMode.Additive));
         scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.DETECT, LoadSceneMode.Additive));
+        healthPlayer.gameObject.SetActive(true);
         StartCoroutine(GetSceneLoadingProgress());
     }
 
@@ -45,6 +47,32 @@ public class GameManager : MonoBehaviour
         scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.DETECT, LoadSceneMode.Additive));
         healthPlayer.Reset();
         score.value = 0;
+        healthPlayer.gameObject.SetActive(true);
+        StartCoroutine(GetSceneLoadingProgress());
+    }
+
+    public void LoadTutorial()
+    {
+        loadingScreen.SetActive(true);
+        scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.START_SCREEN));
+        scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.MENU, LoadSceneMode.Additive));
+        scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.DETECT, LoadSceneMode.Additive));
+        scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.TUTORIAL, LoadSceneMode.Additive));
+        StartCoroutine(GetSceneLoadingProgress());
+    }
+
+    public void LoadStartScreen()
+    {
+        loadingScreen.SetActive(true);
+        for (int i = 0; i < SceneManager.sceneCount; ++i)
+        {
+            if (SceneManager.GetSceneAt(i).buildIndex != (int)SceneIndexes.GAME)
+            {
+                scenesLoading.Add(SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i)));
+            }
+        }
+        scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.START_SCREEN, LoadSceneMode.Additive));
+        healthPlayer.gameObject.SetActive(false);
         StartCoroutine(GetSceneLoadingProgress());
     }
 
@@ -66,7 +94,6 @@ public class GameManager : MonoBehaviour
             }
         }
         loadingScreen.SetActive(false);
-        healthPlayer.gameObject.SetActive(true);
     }
 
     void Update()

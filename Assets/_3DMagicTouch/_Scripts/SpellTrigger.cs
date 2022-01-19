@@ -9,6 +9,7 @@ public class SpellTrigger : MonoBehaviour
     public SpellController spellController;
     public PlayerTransform playerTransform;
     public event System.Action<string, float> onSpellTrigger;
+    public event System.Action<string> TutSpellTrigger;
     
     Dictionary<string, float> spellCD = new Dictionary<string, float>();
     void Awake(){
@@ -28,7 +29,7 @@ public class SpellTrigger : MonoBehaviour
         drawLine.OnFinishDraw += DetectAndTriggerSpell;
         for (int i = 0; i < spellController.activeTime.Count; ++i)
         {
-            spellController.activeTime[i] = 0f;
+            spellController.activeTime[i] = -100f;
         }
     }
 
@@ -41,6 +42,10 @@ public class SpellTrigger : MonoBehaviour
             if (onSpellTrigger != null)
             {
                 onSpellTrigger(spellName, GetCooldowns(spellName));
+            }
+            if (TutSpellTrigger != null)
+            {
+                TutSpellTrigger(spellName);
             }
         }
     }

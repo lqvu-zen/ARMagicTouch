@@ -7,4 +7,9 @@ public class StartScreen : MonoBehaviour
     public void LoadGame(){
         GameManager.instance.LoadGame();
     }
+
+    public void LoadTutorial()
+    {
+        GameManager.instance.LoadTutorial();
+    }
 }
