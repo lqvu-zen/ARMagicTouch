@@ -770,6 +770,8 @@ MonoBehaviour:
   spawnableObjects:
   - spawnablePrefabs: {fileID: 1272987726755943440, guid: 1dd422a13e32a1e4b8cc09b12399ce5c, type: 3}
     timeDelay: 5
+  - spawnablePrefabs: {fileID: 1697448146555188705, guid: d71bdc8c3b4005d4d8322725b0f84d0e, type: 3}
+    timeDelay: 10
   manaZone: {fileID: 633987594}
   plane: {fileID: 1239247664}
   gate: {fileID: 7357518990479318012, guid: a563be29cfdf3be4c83ca56b281b94cc, type: 3}

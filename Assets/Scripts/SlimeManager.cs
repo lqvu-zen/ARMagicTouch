@@ -14,6 +14,8 @@ public class SlimeManager : MonoBehaviour
     public IntVariable playerHealth;
     public IntVariable score;
 
+    public int scoreValue;
+
     bool died = false;
 
     // Start is called before the first frame update
@@ -72,7 +74,7 @@ public class SlimeManager : MonoBehaviour
             died = true;
             //anim.SetInteger("State", ((int)MonstersManager.MonsterState.Die));
             anim.Play("Die");
-            score.value += 1;
+            score.value += scoreValue;
             HighscoreController.SetHighscore(score.value);
             StartCoroutine(DestroyMonster(2));
         }    

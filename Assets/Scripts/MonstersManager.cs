@@ -195,7 +195,7 @@ public class MonstersManager : MonoBehaviour
         {
             Vector3 genPosition = gatePosition;
             genPosition.x += UnityEngine.Random.Range(-1f, 1f);
-            spawnedObjects.Add(Instantiate(gameObjecty, gatePosition, Quaternion.identity));
+            spawnedObjects.Add(Instantiate(gameObjecty, genPosition, Quaternion.identity));
             spawnedObjects[spawnedObjects.Count - 1].transform.parent = monsterHolder;
             yield return new WaitForSeconds(timeDelay);
         }

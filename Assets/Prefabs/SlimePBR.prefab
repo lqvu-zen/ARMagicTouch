@@ -381,6 +381,7 @@ MonoBehaviour:
   hp: 3
   playerHealth: {fileID: 11400000, guid: e7b1786942dadff4bb35c9d9ea9655d7, type: 2}
   score: {fileID: 11400000, guid: c0bb89576d24af04f9cef4b4a98c5668, type: 2}
+  scoreValue: 1
 --- !u!54 &-6104445716102162798
 Rigidbody:
   m_ObjectHideFlags: 0
