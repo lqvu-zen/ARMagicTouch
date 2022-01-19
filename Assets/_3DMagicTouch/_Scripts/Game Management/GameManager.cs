@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void Reload()
     {
+        isDead = false;
         loadingScreen.SetActive(true);
         scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.AR));
         scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.DETECT));

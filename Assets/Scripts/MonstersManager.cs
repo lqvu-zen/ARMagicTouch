@@ -20,7 +20,8 @@ public class MonstersManager : MonoBehaviour
         Idle, 
         Walk, 
         Attack, 
-        Die 
+        Die, 
+        Hit
     };
 
     [SerializeField]

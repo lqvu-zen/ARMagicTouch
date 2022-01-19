@@ -377,8 +377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b047e723c9d31479ec06a459fd344a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
-  hp: 1
+  speed: 0.08
+  hp: 3
   playerHealth: {fileID: 11400000, guid: e7b1786942dadff4bb35c9d9ea9655d7, type: 2}
   score: {fileID: 11400000, guid: c0bb89576d24af04f9cef4b4a98c5668, type: 2}
 --- !u!54 &-6104445716102162798
