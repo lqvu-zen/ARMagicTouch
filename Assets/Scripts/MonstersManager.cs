@@ -166,7 +166,8 @@ public class MonstersManager : MonoBehaviour
             {
                 gatePosition = new Vector3(hitPose.position.x, hitPose.position.y + 1f, hitPose.position.z);
 
-                Instantiate(gate, gatePosition, Quaternion.identity);
+                GameObject gatenew = Instantiate(gate, gatePosition, Quaternion.identity);
+                gatenew.transform.parent = monsterHolder;
                 gate_spawned = true;
 
                 CloseWarningPanel();
