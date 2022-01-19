@@ -25,6 +25,7 @@ public class DrawLine : MonoBehaviour
         Vector2 mousePos = Input.mousePosition;
         float z = Camera.main.transform.position.z + 5f;
         Vector3 currentPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 0.5f));
+        currentPos = Camera.main.transform.InverseTransformPoint(currentPos);
         if (Input.GetMouseButtonDown(0)){
             if (currentLine)
                 currentLine.gameObject.SetActive(false);
@@ -58,12 +59,13 @@ public class DrawLine : MonoBehaviour
 	{
         LineRenderer line;
         if (useBaseLine){
-            line = Instantiate<LineRenderer>(baseLine);
+            line = Instantiate<LineRenderer>(baseLine, Camera.main.transform);
         }
         else{
             line = new GameObject("line").AddComponent<LineRenderer>();
         }
-        line.useWorldSpace = true;
+        // line.transform.parent = Camera.main.transform;
+        // line.useWorldSpace = true;
         line.positionCount = 1;
         line.SetPosition(0, pos);
         return line;

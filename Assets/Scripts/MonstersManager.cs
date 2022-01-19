@@ -50,6 +50,8 @@ public class MonstersManager : MonoBehaviour
     public GameObject panel;
     public GameObject panel_warning;
 
+    public Transform monsterHolder;
+
     void Awake()
     {
         arCamera = GameObject.Find("AR Camera").GetComponent<Camera>();
@@ -190,6 +192,7 @@ public class MonstersManager : MonoBehaviour
         while (continueSpawn)
         {
             spawnedObjects.Add(Instantiate(gameObjecty, gatePosition, Quaternion.identity));
+            spawnedObjects[spawnedObjects.Count - 1].transform.parent = monsterHolder;
             yield return new WaitForSeconds(timeDelay);
         }
     }

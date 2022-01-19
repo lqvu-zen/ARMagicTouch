@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public AudioSource bgm;
     public DeadScreen deadScreen;
     public HealthPlayer healthPlayer;
+    public IntVariable score;
     public bool isDead;
 
     void Awake()
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.AR, LoadSceneMode.Additive));
         scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.DETECT, LoadSceneMode.Additive));
         healthPlayer.Reset();
+        score.value = 0;
         StartCoroutine(GetSceneLoadingProgress());
     }
 
