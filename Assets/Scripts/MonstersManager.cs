@@ -21,7 +21,7 @@ public class MonstersManager : MonoBehaviour
         Walk, 
         Attack, 
         Die, 
-        Hit
+        GetHit
     };
 
     [SerializeField]

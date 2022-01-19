@@ -70,7 +70,8 @@ public class SlimeManager : MonoBehaviour
         if (!died)
         {
             died = true;
-            anim.SetInteger("State", ((int)MonstersManager.MonsterState.Die));
+            //anim.SetInteger("State", ((int)MonstersManager.MonsterState.Die));
+            anim.Play("Die");
             score.value += 1;
             HighscoreController.SetHighscore(score.value);
             StartCoroutine(DestroyMonster(2));
@@ -118,6 +119,7 @@ public class SlimeManager : MonoBehaviour
         {
             hp -= 3;
         }
+        anim.Play("GetHit");
     }
 
     void AttackPlayer()
